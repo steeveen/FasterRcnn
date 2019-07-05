@@ -22,19 +22,18 @@ code is far away from bugs with the god animal protecting
 from matplotlib import pyplot as plt
 from matplotlib import patches as pts
 import numpy as np
-def showPatches(a,bg=None):
-    if bg == None:
-        bg = np.zeros((128, 128))
+def showPatches(a,bg = np.zeros((128, 128))):
+
     plt.imshow(bg, 'gray')
     axs = plt.gca()
     for i in range(a.shape[0]):
         _a=a[i,:]
-        if i<3:
-            ec='#ff00aa'
-        elif i<6:
-            ec='#3300ff'
+        if i%9<3:
+            ec='#ff0000'
+        elif i%9<6:
+            ec='#00ff00'
         else:
-            ec='#00aacc'
+            ec='#0000ff'
         w=_a[3]-_a[1]
         h=_a[2]-_a[0]
         axs.add_patch(pts.Rectangle((_a[1],_a[0]),w,h,edgecolor=ec,facecolor=None,fill=False))
